@@ -8,6 +8,7 @@ View summary statistics of all transactions by NEM Wallet Address
 # Usage
 
 `python NEMDateRange.py -i input.csv -o output.csv -s 01/30/2018 -e 02/02/2018`
+
 Arguements:
   - Input File: `-i inputfile.csv` (each address on own line)
   - Output File Name: `-o outputfile.csv`
