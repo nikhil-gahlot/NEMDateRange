@@ -1,4 +1,4 @@
-#TO USE: python dateRange.py -i input.csv -o output.csv -s 01/30/2018 -e 02/02/2018
+#TO USE: python NEMDateRange.py -i input.csv -o output.csv -s 01/30/2018 -e 02/02/2018
 #to find open nodes: https://nodeexplorer.com/api_openapi_version
 
 import urllib, json
@@ -6,6 +6,7 @@ import datetime
 import sys
 import csv
 import argparse
+
 
 def prettyPrint(transaction, adjustedTime, address):
 	address = address
@@ -108,6 +109,9 @@ endDate = datetime.datetime.strptime(flagArgs.endDate, '%m/%d/%Y')
 summaryStatistics = []
 summaryStatisticsFile = "summary.csv"
 
+duplicates = set()
+
+
 with open(inputFile, 'rb') as infile:
 	addressReader = csv.reader(infile)
 	with open(allTransactions, 'wb') as outfile:
@@ -129,7 +133,15 @@ with open(inputFile, 'rb') as infile:
 			parameters = "address=" + address[0]
 			history = getHistory(parameters, startDate, endDate, address[0])
 			for transaction in history:
-				csv_outfile.writerow(transaction)
+				transKey = ""
+				if transaction[1] > transaction[2]:
+					transKey = transaction[1] + transaction[2] + transaction[3]
+				else:
+					transKey = transaction[2] + transaction[1] + transaction[3]
+
+				if transKey not in duplicates:
+					csv_outfile.writerow(transaction)
+					duplicates.add(transKey)
 
 				#summary statistics
 				numTransactions = numTransactions + 1
