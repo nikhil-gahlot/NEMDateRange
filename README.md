@@ -1,17 +1,23 @@
-# NEMDateRange
-NEM Date Range finder
+# NEM DateRange Search
 
-Input:
+[![Archer|Impact](https://cldup.com/dTxpPi9lDf.thumb.png)](https://www.archerimpact.com/)
 
-NEM Address File (one per line as .csv)
+Search the transactions of many NEM Wallet Address's within a given date range
+View summary statistics of all transactions by NEM Wallet Address
 
-Start Date (mm/dd/yyyy)
+# Usage
 
-End Date (mm/dd/yyyy)
+`python NEMDateRange.py -i input.csv -o output.csv -s 01/30/2018 -e 02/02/2018`
+Arguements:
+  - Input File: `-i inputfile.csv` (each address on own line)
+  - Output File Name: `-o outputfile.csv`
+  - Start Date: `-s mm/dd/yyyy` (inclusive)
+  - End Date: `-e mm/dd/yyyy` (inclusive)
 
-Output:
 
-Transaction Log (as .csv file containins all transactions for each address in the input file)
+Notes:
+  - Python2.7
+  - Duplicate transactions are not repeated in transaction log (output file)
+  - .csv can be opened/viewed in excel 
 
-Summary Statistics (as .csv file contains summary for the transactions made by each address in the input file)
 
