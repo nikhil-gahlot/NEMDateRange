@@ -1,6 +1,6 @@
 # NEM DateRange Search
 
-[[Archer](https://cldup.com/dTxpPi9lDf.thumb.png)](https://www.archerimpact.com/)
+[Archer Impact](https://www.archerimpact.com/)
 
 Search the transactions of many NEM Wallet Address's within a given date range
 View summary statistics of all transactions by NEM Wallet Address
